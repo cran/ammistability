@@ -2,7 +2,7 @@ Package: ammistability
 Type: Package
 Title: Additive Main Effects and Multiplicative Interaction Model
         Stability Parameters
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(given  = c("B.", "C."), family = "Ajay",
            email = "ajaygpb@yahoo.co.in",
@@ -35,22 +35,24 @@ Description: Computes various stability parameters from Additive Main Effects
 Copyright: 2017-2018, ICAR-DGR
 License: GPL-2 | GPL-3
 Encoding: UTF-8
-Depends: R (>= 3.0.1)
+Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Imports: agricolae, ggcorrplot, ggplot2, methods, reshape2, stats,
         Rdpack
 Suggests: knitr, rmarkdown, pander
 RdMacros: Rdpack
 URL: http://github.com/ajaygpb/ammistability
+        https://CRAN.R-project.org/package=ammistability
         https://ajaygpb.github.io/ammistability
+        https://doi.org/10.5281/zenodo.1344756
 BugReports: http://github.com/ajaygpb/ammistability/issues
 NeedsCompilation: no
-Packaged: 2018-08-09 15:42:17 UTC; J. Aravind
+Packaged: 2018-12-07 05:42:00 UTC; lenovo
 Author: B. C. Ajay [aut, cre] (<https://orcid.org/0000-0001-7222-8483>),
   J. Aravind [aut] (<https://orcid.org/0000-0002-4791-442X>),
   R. Abdul Fiyaz [aut],
   ICAR [cph] (https://www.icar.org.in)
 Maintainer: B. C. Ajay <ajaygpb@yahoo.co.in>
 Repository: CRAN
-Date/Publication: 2018-08-13 09:20:03 UTC
+Date/Publication: 2018-12-07 06:30:06 UTC

@@ -1,13 +1,19 @@
 ---
-title: "The **ammistability** package: A brief introduction"
-author: Ajay, B. C.^1^, Aravind, J. ^2^, and Abdul Fiyaz, R.^3^
-date: '`r Sys.Date()`'
+title: 'The `ammistability` Package: A Brief Introduction'
+author: "Ajay, B. C.^1^, Aravind, J.^2^, and Abdul Fiyaz, R.^3^"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    dev: cairo_pdf
+    fig_caption: no
+  html_document:
+    df_print: paged
+classoption: table
 header-includes:
 - \usepackage{fancyhdr}
 - \usepackage{wrapfig}
 - \pagestyle{fancy}
 - \fancyhead[LE,RO]{\slshape \rightmark}
-- \fancyhead[LO,RE]{The ammistability package{:} A brief introduction}
 - \fancyfoot[C]{\thepage}
 - \usepackage{hyperref}
 - \hypersetup{colorlinks=true}
@@ -15,18 +21,13 @@ header-includes:
 - \hypersetup{linkcolor=blue}
 - \usepackage{pdflscape}
 - \usepackage{booktabs}
-- \usepackage[table]{xcolor}
+- \usepackage{xcolor}
 - \newcommand{\blandscape}{\begin{landscape}}
 - \newcommand{\elandscape}{\end{landscape}}
-output:
-  pdf_document:
-    dev: cairo_pdf
-    fig_caption: no
-  html_document:
-    df_print: paged
+- \fancyhead[LO,RE]{The -\texttt{ammistability} Package{:} A Brief Introduction}
+link-citations: yes
 csl: frontiers.csl
 bibliography: REFERENCES.bib
-link-citations: yes
 toc: no
 vignette: |
   %\VignetteIndexEntry{Introduction}
@@ -34,14 +35,33 @@ vignette: |
   %\VignetteEngine{knitr::rmarkdown_notangle}
 ---
 
-\begin{center}
+```{r, echo=FALSE}
+out_type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+r = getOption("repos")
+r["CRAN"] = "https://cran.rstudio.com/"
+#r["CRAN"] = "https://cloud.r-project.org/"
+#r["CRAN"] = "https://ftp.iitm.ac.in/cran/"
+options(repos = r)
+```
+
+```{r, results='asis', echo=FALSE}
+switch(out_type,
+    html = {cat("<p>1. RRS, ICAR-Directorate of Groundnut Research, Anantapur.</p>
+
+<p>2. ICAR-National Bureau of Plant Genetic Resources, New Delhi.</p>
+
+<p>3. ICAR-Indian Institute of Rice Research, Hyderabad.</p>")},
+    latex = cat("\\begin{center}
 1. RRS, ICAR-Directorate of Groundnut Research, Anantapur.
 
 2. ICAR-National Bureau of Plant Genetic Resources, New Delhi.
 
 3. ICAR-Indian Institute of Rice Research, Hyderabad.
 
-\end{center}
+\\end{center}" )
+)
+```
 
 \begin{center}
 \vspace{6pt}
@@ -65,22 +85,25 @@ knitr::opts_chunk$set(
     \vspace{-20pt}
 \end{wrapfigure}
 
-## Overview <img src="https://raw.githubusercontent.com/ajaygpb/ammistability/master/inst/extdata/ammistability.png" align="right" alt="logo" width="173" height = "200" style = "border: none; float: right;">
+## Overview <img src="https://raw.githubusercontent.com/ajaygpb/ammistability/master/inst/extdata/ammistability.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
 
 The package `ammistability` is a collection of functions for the computation of various stability parameters from the results of Additive Main Effects and Multiplicative Interaction (AMMI) analysis computed by the  [`AMMI`](https://www.rdocumentation.org/packages/agricolae/versions/1.2-8/topics/AMMI) function of [`agricolae`](https://CRAN.R-project.org/package=agricolae) package.
 
-The goal of this vignette is to introduce the users to these functions and get started in describing sequentially recorded germination count data. This document assumes a basic knowledge of `R` programming language.
+The goal of this vignette is to introduce the users to these functions and give a primer in computation of various stability parameters/indices from a fitted AMMI model. This document assumes a basic knowledge of `R` programming language.
 
 ## Installation
-The package can be installed using the following functions:
+The package can be installed from CRAN as follows:
 
 ```{r, eval=FALSE}
 # Install from CRAN
 install.packages('ammistability', dependencies=TRUE)
+```
 
+The development version can be installed from github as follows:
+
+```{r, eval=FALSE}
 # Install development version from Github
 devtools::install_github("ajaygpb/ammistability")
-
 ```
 
 \clearpage
@@ -89,6 +112,40 @@ Then the package can be loaded using the function
 ```{r, eval=TRUE}
 library(ammistability)
 ```
+
+## Version History
+The current version of the package is `r as.vector(available.packages()["ammistability",]["Version"])`. The previous versions are as follows.
+
+**Table 1.** Version history of `ammistability` `R` package.
+
+```{r, echo=FALSE, message=FALSE, eval = FALSE}
+if (requireNamespace("RCurl", quietly = TRUE) & requireNamespace("httr", quietly = TRUE) & requireNamespace("XML", quietly = TRUE)) {
+pkg <- "ammistability"
+link <- paste0("https://cran.r-project.org/src/contrib/Archive/", pkg, "/")
+cafile <- system.file("CurlSSL", "cacert.pem", package = "RCurl")
+page <- httr::GET(link, httr::config(cainfo = cafile))
+page <- httr::content(page, as = 'text')
+# page <- RCurl::getURL(link)
+
+VerHistory <- XML::readHTMLTable(page)[[1]][,2:3]
+colnames(VerHistory) <- c("Version", "Date")
+VerHistory <- VerHistory[VerHistory$Version != "Parent Directory",]
+VerHistory <- VerHistory[!is.na(VerHistory$Version), ]
+VerHistory$Date <- as.Date(VerHistory$Date)
+VerHistory$Version <- gsub("ammistability_", "", VerHistory$Version)
+VerHistory$Version <- gsub(".tar.gz", "", VerHistory$Version)
+
+VerHistory <- VerHistory[order(VerHistory$Date), c("Version", "Date")]
+rownames(VerHistory) <- NULL
+} else {
+print("Packages 'RCurl', 'httr' and 'XML' are required to generate this table")
+}
+
+knitr::kable(VerHistory)
+
+```
+
+To know detailed history of changes use `news(package='ammistability')`.
 
 ## AMMI model
 The difference in response of genotypes to different environmental conditions is known as Genotype-Environment Interaction (GEI). Understanding the nature and structure of this interaction is critical for plant breeders to select for genotypes with wide or specific adaptability. One of the most popular techniques to achieve this is by fitting the Additive Main Effects and Multiplicative Interaction (AMMI) model to the results of multi environment trials [@gauch_model_1988; @gauch_statistical_1992]. 
@@ -135,7 +192,7 @@ rownames(stabparams) <- NULL
 ```
 
 ```{r, echo = FALSE, eval = TRUE}
-pander::pander(stabparams, style='multiline',
+pander::pander(stabparams, style = 'multiline',
                split.cell = c(15, 15, 50, 10),
                justify = c('left'), split.table = Inf, keep.line.breaks = TRUE,
                use.hyphening = FALSE, missing = "")
