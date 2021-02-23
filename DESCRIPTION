@@ -2,22 +2,26 @@ Package: ammistability
 Type: Package
 Title: Additive Main Effects and Multiplicative Interaction Model
         Stability Parameters
-Version: 0.1.1
-Authors@R: c(
-    person(given  = c("B.", "C."), family = "Ajay",
-           email = "ajaygpb@yahoo.co.in",
-           role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-7222-8483")),
-    person(given = "J.", family = "Aravind",
-           email = "j.aravind@icar.gov.in",
-           role = c("aut"),
-           comment = c(ORCID = "0000-0002-4791-442X")),
-    person(given = "R.", family = c("Abdul Fiyaz"),
-           email = "fiyaz.ra@icar.gov.in",
-           role = "aut"),
-    person("ICAR",
-           role = c("cph"),
-           comment = c(url = "https://www.icar.org.in")))
+Version: 0.1.2
+Authors@R: 
+    c(person(given = c("B.", "C."),
+             family = "Ajay",
+             role = c("aut", "cre"),
+             email = "ajaygpb@yahoo.co.in",
+             comment = c(ORCID = "0000-0001-7222-8483")),
+      person(given = "J.",
+             family = "Aravind",
+             role = "aut",
+             email = "j.aravind@icar.gov.in",
+             comment = c(ORCID = "0000-0002-4791-442X")),
+      person(given = "R.",
+             family = "Abdul Fiyaz",
+             role = "aut",
+             email = "fiyaz.ra@icar.gov.in",
+             comment = c(ORCID = "0000-0001-6261-7071")),
+      person(given = "ICAR",
+             role = "cph",
+             comment = c(url = "https://www.icar.org.in")))
 Description: Computes various stability parameters from Additive Main Effects
     and Multiplicative Interaction (AMMI) analysis results such as  Modified
     AMMI Stability Value (MASV), Sums of the Absolute Value of the Interaction
@@ -32,27 +36,27 @@ Description: Computes various stability parameters from Additive Main Effects
     Simultaneous Selection Index for Yield and Stability from the computed
     stability parameters. See the vignette for complete list of citations for
     the methods implemented.
-Copyright: 2017-2018, ICAR-DGR
+Copyright: 2017-2020, ICAR-DGR
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Imports: agricolae, ggcorrplot, ggplot2, methods, reshape2, stats,
-        Rdpack
-Suggests: knitr, rmarkdown, pander
-RdMacros: Rdpack
-URL: http://github.com/ajaygpb/ammistability
+        Rdpack, mathjaxr
+Suggests: knitr, rmarkdown, pander, XML, httr, RCurl
+RdMacros: Rdpack, mathjaxr
+URL: https://github.com/ajaygpb/ammistability/
         https://CRAN.R-project.org/package=ammistability
-        https://ajaygpb.github.io/ammistability
+        https://ajaygpb.github.io/ammistability/
         https://doi.org/10.5281/zenodo.1344756
-BugReports: http://github.com/ajaygpb/ammistability/issues
+BugReports: https://github.com/ajaygpb/ammistability/issues
 NeedsCompilation: no
-Packaged: 2018-12-07 05:42:00 UTC; lenovo
+Packaged: 2021-02-21 21:24:07 UTC; J. Aravind
 Author: B. C. Ajay [aut, cre] (<https://orcid.org/0000-0001-7222-8483>),
   J. Aravind [aut] (<https://orcid.org/0000-0002-4791-442X>),
-  R. Abdul Fiyaz [aut],
+  R. Abdul Fiyaz [aut] (<https://orcid.org/0000-0001-6261-7071>),
   ICAR [cph] (https://www.icar.org.in)
 Maintainer: B. C. Ajay <ajaygpb@yahoo.co.in>
 Repository: CRAN
-Date/Publication: 2018-12-07 06:30:06 UTC
+Date/Publication: 2021-02-23 09:40:19 UTC

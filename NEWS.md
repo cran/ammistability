@@ -1,4 +1,14 @@
-# augmentedRCBD  0.1.1
+# ammistability  0.1.2
+
+## VIGNETTE:
+* Removed cairo dependency.
+
+## OTHER NOTES:
+* Updated citation.
+* Converted all equations in Rd files to `MathJax`using `mathjaxr`.
+
+
+# ammistability  0.1.1
 
 ## VIGNETTE:
 * Fixed LATEX xcolor options clash issue in vignette.
