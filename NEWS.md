@@ -1,3 +1,14 @@
+# ammistability  0.1.3
+
+## UPDATED FUNCTIONS:
+* `rankslopegraph ` - Fixed issue with duplicate ranks.
+
+## VIGNETTE:
+* Fixed fetching CRAN page for version history to fail gracefully when access is down.
+
+## OTHER NOTES:
+* Added `mathjaxr` missing from Namespace imports.
+
 # ammistability  0.1.2
 
 ## VIGNETTE:
@@ -6,7 +17,6 @@
 ## OTHER NOTES:
 * Updated citation.
 * Converted all equations in Rd files to `MathJax`using `mathjaxr`.
-
 
 # ammistability  0.1.1
 
